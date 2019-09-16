@@ -1,5 +1,7 @@
 package NextBiggestNumber;
 
+import java.util.Arrays;
+
 /**
  * Hello world!
  *
@@ -13,6 +15,8 @@ public class BerlinClock
         int minutes = Integer.parseInt(time[1]);
         int seconds = Integer.parseInt(time[2]);
 
+        System.out.println(Arrays.toString(time));
+
         String ss = getSeconds(seconds);
 
         String subMinutesString = getSubMinutes(minutes);
@@ -20,19 +24,7 @@ public class BerlinClock
         int mm = minutes / 5;
 
 
-        if (inputTime.equals("00:00:00")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
-        }
-
-        if (inputTime.equals("00:00:01")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
-        }
-
-        if (inputTime.equals("00:01:01")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
-        }
-
-        return new String[]{ss, "OOOO", "ROOO", "OOOOOOOOOOO", subMinutesString};
+        return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
     }
 
     private String getSubMinutes(int minutes) {
