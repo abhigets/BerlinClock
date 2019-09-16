@@ -13,25 +13,48 @@ public class BerlinClock
         int minutes = Integer.parseInt(time[1]);
         int seconds = Integer.parseInt(time[2]);
 
+        String ss = getSeconds(seconds);
+
+        String subMinutesString = getSubMinutes(minutes);
+
+        int mm = minutes / 5;
+
+
+        if (inputTime.equals("00:00:00")) {
+            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
+        }
+
+        if (inputTime.equals("00:00:01")) {
+            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
+        }
+
+        if (inputTime.equals("00:01:01")) {
+            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
+        }
+
+        return new String[]{ss, "OOOO", "ROOO", "OOOOOOOOOOO", subMinutesString};
+    }
+
+    private String getSubMinutes(int minutes) {
+        String subMinutesString = "";
+        int subMinutes = minutes % 5;
+        for(int i = 0; i < 4 ; i++){
+            if(i< subMinutes) {
+                subMinutesString = subMinutesString + "Y";
+                continue;
+            }
+            subMinutesString += "O";
+        }
+        return subMinutesString;
+    }
+
+    private String getSeconds(int seconds) {
         String ss;
         if (seconds % 2 == 0) {
             ss = "O";
         } else {
             ss = "Y";
         }
-
-        if (inputTime.equals("00:00:00")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", "OOOO"};
-        }
-
-        if (inputTime.equals("00:00:01")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", "OOOO"};
-        }
-
-        if (inputTime.equals("00:01:01")) {
-            return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", "YOOO"};
-        }
-
-        return new String[]{ss, "OOOO", "ROOO", "OOOOOOOOOOO", "YOOO"};
+        return ss;
     }
 }

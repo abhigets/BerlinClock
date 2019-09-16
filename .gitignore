@@ -1,3 +1,4 @@
 .idea/
 katacom.iml
 target/
+.DS_Store
