@@ -21,6 +21,25 @@ public class BerlinClockTest
 
     @Test
     public void given_I_enter_a_00_00_01_i_should_get_representation_of_01() {
-        assertArrayEquals(new String[]{ "Y","OOOO","OOOO","OOOOOOOOOOO","YOOO"}, myBerlinClock.getBerlinClock("00:00:01"));
+        assertArrayEquals(
+                new String[]{ "Y","OOOO","OOOO","OOOOOOOOOOO","OOOO"},
+                myBerlinClock.getBerlinClock("00:00:01")
+        );
+    }
+
+    @Test
+    public void given_I_enter_a_00_01_01_i_should_get_representation_of_1_minute_and_1_second() {
+        assertArrayEquals(
+                new String[]{ "Y","OOOO","OOOO","OOOOOOOOOOO","YOOO"},
+                myBerlinClock.getBerlinClock("00:01:01")
+        );
+    }
+
+    @Test
+    public void given_I_enter_a_01_01_01_i_should_get_representation_of_1_hour_1_minute_and_1_second() {
+        assertArrayEquals(
+                new String[]{ "Y","OOOO","ROOO","OOOOOOOOOOO","YOOO"},
+                myBerlinClock.getBerlinClock("01:01:01")
+        );
     }
 }
