@@ -16,7 +16,10 @@ public class BerlinClockTest
 
     @Test
     public void given_I_enter_a_00_00_00_i_should_get_all_lights_off() {
-        assertArrayEquals(new String[]{ "O","OOOO","OOOO","OOOOOOOOOOO","OOOO"}, myBerlinClock.getBerlinClock("00:00:00"));
+        assertArrayEquals(
+                new String[]{ "O","OOOO","OOOO","OOOOOOOOOOO","OOOO"},
+                myBerlinClock.getBerlinClock("00:00:00")
+        );
     }
 
     @Test
