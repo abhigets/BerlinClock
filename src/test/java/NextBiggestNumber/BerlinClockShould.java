@@ -1,16 +1,15 @@
 package NextBiggestNumber;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class BerlinClockShould
 {
     BerlinClock myBerlinClock;
-    @Before
+    @BeforeEach
     public void setup(){
         myBerlinClock = new BerlinClock();
     }
@@ -64,7 +63,7 @@ public class BerlinClockShould
     }
 
     @Test
-    @Ignore
+    @Disabled
     public void given_I_enter_a_01_01_01_i_should_get_representation_of_1_hour_1_minute_and_1_second() {
         assertArrayEquals(
                 new String[]{ "Y","OOOO","ROOO","OOOOOOOOOOO","YOOO"},
