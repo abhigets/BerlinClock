@@ -20,17 +20,21 @@ public class BerlinClock {
 
         System.out.println(Arrays.toString(time));
 
-        String sec = getSeconds(seconds);
+        String sec = getColouredSeconds(seconds);
 
-        String oneFullMinString = getOneFullMin(minutes);
+        String oneFullMinString = getMinor(minutes, YELLOW_LIGHT);
 
         String fiveFullMins = getFiveFullMins(minutes);
 
-        String oneFullHr = getOneFullHour(hours);
+        String oneFullHr = getMinor(hours, RED_LIGHT);
 
         String fiveFullHrs = getFiveFullHours(hours);
 
         return new String[]{sec, fiveFullHrs, oneFullHr, fiveFullMins, oneFullMinString};
+    }
+
+    private String getMinor(int clockData, String colour) {
+        return getColouredFields(clockData % 5, colour, 4);
     }
 
     private String getFiveFullHours(int hours) {
@@ -38,19 +42,9 @@ public class BerlinClock {
         return getColouredFields(hrs, RED_LIGHT, 4);
     }
 
-    private String getOneFullHour(int hours) {
-        int hrs = hours % 5;
-        return getColouredFields(hrs, RED_LIGHT, 4);
-    }
-
     private String getFiveFullMins(int minutes) {
         int mm = minutes / 5;
         return getColouredFields(mm, YELLOW_LIGHT, 11);
-    }
-
-    private String getOneFullMin(int minutes) {
-        int subMinutes = minutes % 5;
-        return getColouredFields(subMinutes, YELLOW_LIGHT, 4);
     }
 
     private String getColouredFields(int subMinutes, String sign, int length) {
@@ -65,7 +59,7 @@ public class BerlinClock {
         return subMinutesString.toString();
     }
 
-    private String getSeconds(int seconds) {
+    private String getColouredSeconds(int seconds) {
         return seconds % 2 == 0 ? OFF_LIGHT : YELLOW_LIGHT;
     }
 }
