@@ -17,20 +17,32 @@ public class BerlinClock
 
         System.out.println(Arrays.toString(time));
 
-        String ss = getSeconds(seconds);
+        String sec = getSeconds(seconds);
 
-        String subMinutesString = getSubMinutes(minutes);
+        String oneFullMinString = getOneFullMin(minutes);
 
-        int mm = minutes / 5;
+        String fiveFullMins = getFiveFullMins(minutes);
 
 
-        return new String[]{ss, "OOOO", "OOOO", "OOOOOOOOOOO", subMinutesString};
+
+
+
+        return new String[]{sec, "OOOO", "OOOO", fiveFullMins, oneFullMinString};
     }
 
-    private String getSubMinutes(int minutes) {
-        String subMinutesString = "";
+    private String getFiveFullMins(int minutes) {
+        int mm = minutes / 5;
+        return getMinuteStringRepresentation(mm,12);
+    }
+
+    private String getOneFullMin(int minutes) {
         int subMinutes = minutes % 5;
-        for(int i = 0; i < 4 ; i++){
+        return getMinuteStringRepresentation(subMinutes,4);
+    }
+
+    private String getMinuteStringRepresentation(int subMinutes, int length) {
+        String subMinutesString = "";
+        for(int i = 0; i < length ; i++){
             if(i< subMinutes) {
                 subMinutesString = subMinutesString + "Y";
                 continue;

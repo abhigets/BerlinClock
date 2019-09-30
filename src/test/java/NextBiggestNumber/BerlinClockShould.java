@@ -19,12 +19,15 @@ public class BerlinClockShould {
 
     @ParameterizedTest
     @CsvSource({
-            "O, OOOO, OOOO, OOOOOOOOOOO, OOOO, 00:00:00",
-            "Y, OOOO, OOOO, OOOOOOOOOOO, OOOO, 00:00:01",
-            "Y, OOOO, OOOO, OOOOOOOOOOO, YOOO, 00:01:01",
-            "Y, OOOO, OOOO, OOOOOOOOOOO, YYOO, 00:02:01",
-            "Y, OOOO, OOOO, OOOOOOOOOOO, YYYO, 00:03:01",
-            "Y, OOOO, OOOO, OOOOOOOOOOO, YYYY, 00:04:01"
+            "O, OOOO, OOOO, OOOOOOOOOOOO, OOOO, 00:00:00",
+            "Y, OOOO, OOOO, OOOOOOOOOOOO, OOOO, 00:00:01",
+            "Y, OOOO, OOOO, OOOOOOOOOOOO, YOOO, 00:01:01",
+            "Y, OOOO, OOOO, OOOOOOOOOOOO, YYOO, 00:02:01",
+            "Y, OOOO, OOOO, OOOOOOOOOOOO, YYYO, 00:03:01",
+            "Y, OOOO, OOOO, OOOOOOOOOOOO, YYYY, 00:04:01",
+            "Y, OOOO, OOOO, YOOOOOOOOOOO, OOOO, 00:05:01",
+            "Y, OOOO, OOOO, YYOOOOOOOOOO, OOOO, 00:10:01",
+            "Y, OOOO, OOOO, YYYOOOOOOOOO, YYOO, 00:17:01"
     })
     void testWithParameters(String sec,
                             String fiveFullHrs,
@@ -38,14 +41,5 @@ public class BerlinClockShould {
                 myBerlinClock.getBerlinClock(berlinClockInput)
         );
 
-    }
-
-    @Test
-    @Disabled
-    public void given_I_enter_a_01_01_01_i_should_get_representation_of_1_hour_1_minute_and_1_second() {
-        assertArrayEquals(
-                new String[]{"Y", "OOOO", "ROOO", "OOOOOOOOOOO", "YOOO"},
-                myBerlinClock.getBerlinClock("01:01:01")
-        );
     }
 }
