@@ -54,15 +54,15 @@ public class BerlinClock {
     }
 
     private String getColouredFields(int subMinutes, String sign, int length) {
-        String subMinutesString = "";
+        StringBuilder subMinutesString = new StringBuilder();
         for (int i = 0; i < length; i++) {
             if (i < subMinutes) {
-                subMinutesString = subMinutesString + sign;
+                subMinutesString.append(sign);
                 continue;
             }
-            subMinutesString += OFF_LIGHT;
+            subMinutesString.append(OFF_LIGHT);
         }
-        return subMinutesString;
+        return subMinutesString.toString();
     }
 
     private String getSeconds(int seconds) {
