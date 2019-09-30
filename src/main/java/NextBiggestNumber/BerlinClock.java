@@ -4,10 +4,9 @@ import java.util.Arrays;
 
 /**
  * Hello world!
- *
  */
-public class BerlinClock
-{
+public class BerlinClock {
+
     public String[] getBerlinClock(String inputTime) {
 
         final String[] time = inputTime.split(":");
@@ -23,28 +22,38 @@ public class BerlinClock
 
         String fiveFullMins = getFiveFullMins(minutes);
 
+        String oneFullHr = getOneFullHour(hours);
 
+        String fiveFullHrs = getFiveFullHours(hours);
 
+        return new String[]{sec, fiveFullHrs, oneFullHr, fiveFullMins, oneFullMinString};
+    }
 
+    private String getFiveFullHours(int hours) {
+        int hrs = hours / 5;
+        return getMinuteStringRepresentation(hrs, "R", 4);
+    }
 
-        return new String[]{sec, "OOOO", "OOOO", fiveFullMins, oneFullMinString};
+    private String getOneFullHour(int hours) {
+        int hrs = hours % 5;
+        return getMinuteStringRepresentation(hrs, "R", 4);
     }
 
     private String getFiveFullMins(int minutes) {
         int mm = minutes / 5;
-        return getMinuteStringRepresentation(mm,12);
+        return getMinuteStringRepresentation(mm, "Y", 11);
     }
 
     private String getOneFullMin(int minutes) {
         int subMinutes = minutes % 5;
-        return getMinuteStringRepresentation(subMinutes,4);
+        return getMinuteStringRepresentation(subMinutes, "Y", 4);
     }
 
-    private String getMinuteStringRepresentation(int subMinutes, int length) {
+    private String getMinuteStringRepresentation(int subMinutes, String sign, int length) {
         String subMinutesString = "";
-        for(int i = 0; i < length ; i++){
-            if(i< subMinutes) {
-                subMinutesString = subMinutesString + "Y";
+        for (int i = 0; i < length; i++) {
+            if (i < subMinutes) {
+                subMinutesString = subMinutesString + sign;
                 continue;
             }
             subMinutesString += "O";
